@@ -1,10 +1,11 @@
 import 'package:simple_hour/index.dart';
 
+
 class Task extends StatelessWidget {
-  Task(this.name, this.time, this.done);
+  Task(this.name, this.duration, this.done);
 
   final String name;
-  final Duration time;
+  final Duration duration;
   final bool done;
 
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class Task extends StatelessWidget {
               ],
             ),
             Text(
-              time.toString(),
+              ConverterService.getHumanityDuration(duration),
               style: TextStyle(color: Colors.white),
             ),
           ],

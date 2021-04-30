@@ -22,3 +22,7 @@ export 'package:simple_hour/widgets/circular_button.dart';
 export 'package:hive/hive.dart';
 export 'package:simple_hour/screens/upsert_task_screen.dart';
 export 'package:simple_hour/widgets/input.dart';
+export 'package:simple_hour/modules/upsert_form/views/upsert_form.dart';
+export 'package:simple_hour/modules/upsert_form/controllers/upsert_form_controller.dart';
+export 'package:simple_hour/stores/upsert_task_store.dart';
+export 'package:simple_hour/services/converter_service.dart';

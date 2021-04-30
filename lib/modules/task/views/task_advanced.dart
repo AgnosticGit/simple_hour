@@ -1,4 +1,5 @@
 import 'package:simple_hour/index.dart';
+import 'package:simple_hour/services/converter_service.dart';
 
 class TaskAdvanced extends StatelessWidget {
   TaskAdvanced(this.task);
@@ -21,7 +22,7 @@ class TaskAdvanced extends StatelessWidget {
             ],
           ),
           Text(
-            task.time.toString(),
+            ConverterService.getHumanityDuration(task.duration),
             style: TextStyle(color: Colors.white),
           ),
           Row(

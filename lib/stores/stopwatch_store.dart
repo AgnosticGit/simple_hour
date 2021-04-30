@@ -28,4 +28,5 @@ class StopwatchStore extends Store {
     tasks.insert(0, task);
     update();
   }
+  
 }

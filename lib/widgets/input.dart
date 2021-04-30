@@ -53,25 +53,23 @@ class Input extends StatelessWidget {
           : TextInputAction.done,
       onEditingComplete: onEditingComplete,
       decoration: InputDecoration(
-        fillColor: Colors.white,
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
           borderRadius: const BorderRadius.all(Radius.circular(10.0)),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
           borderRadius: const BorderRadius.all(Radius.circular(10.0)),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
           borderRadius: const BorderRadius.all(Radius.circular(10.0)),
         ),
         isDense: true,
         errorText: errorText == '' ? null : errorText,
         errorMaxLines: 10,
+        floatingLabelBehavior: FloatingLabelBehavior.never,
         labelText: hintText,
         labelStyle: TextStyle(color: Colors.grey[350]),
       ),
+      
     );
   }
 }
