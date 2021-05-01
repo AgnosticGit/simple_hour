@@ -21,8 +21,9 @@ class StopwatchScreen extends StatelessWidget {
           color: Colors.white,
           height: 2.0,
         ),
-        Expanded(child: TaskSnap()),
-      
+        Expanded(
+          child: TaskSnap(tasks: StopwatchStore.to.tasks),
+        ),
       ],
     );
   }

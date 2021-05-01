@@ -9,10 +9,14 @@ class StatisticsScreen extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Container(
             height: 200,
-            child: TaskManager(),
+            child: TaskManager(
+              tasks: StopwatchStore.to.tasks,
+            ),
           ),
         )
       ],
     );
   }
+
+  
 }

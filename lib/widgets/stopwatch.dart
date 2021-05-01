@@ -1,9 +1,15 @@
 import 'package:simple_hour/index.dart';
 
 class Stopwatch extends StatelessWidget {
+  const Stopwatch({
+    this.onTap,
+  });
+
+  final void Function()? onTap;
+
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
@@ -27,20 +33,16 @@ class Stopwatch extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   '1:13:10',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: Get.width * 0.1
-                  ),
+                  style:
+                      TextStyle(color: Colors.white, fontSize: Get.width * 0.1),
                 ),
               ),
             ),
             Expanded(
               child: Text(
                 '66%',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: Get.width * 0.05
-                ),
+                style:
+                    TextStyle(color: Colors.white, fontSize: Get.width * 0.05),
               ),
             )
           ],

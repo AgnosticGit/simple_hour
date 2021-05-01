@@ -1,17 +1,18 @@
 import 'package:simple_hour/index.dart';
 
-
 class Task extends StatelessWidget {
-  Task(this.name, this.duration, this.done);
+  const Task({
+    required this.task,
+    this.onTap,
+  });
 
-  final String name;
-  final Duration duration;
-  final bool done;
+  final TaskModel task;
+  final void Function()? onTap;
 
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
-      child:  Container(
+      onTap: onTap,
+      child: Container(
         padding: const EdgeInsets.all(15.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,13 +29,13 @@ class Task extends StatelessWidget {
                 ),
                 const SizedBox(width: 15.0),
                 Text(
-                  name,
+                  task.name,
                   style: TextStyle(color: Colors.white),
                 ),
               ],
             ),
             Text(
-              ConverterService.getHumanityDuration(duration),
+              ConverterService.getHumanityDuration(task.duration),
               style: TextStyle(color: Colors.white),
             ),
           ],
@@ -44,7 +45,7 @@ class Task extends StatelessWidget {
   }
 
   Color _buildDoneColor() {
-    if (done) return Colors.green;
+    if (task.done) return Colors.green;
     return Colors.red;
   }
 }

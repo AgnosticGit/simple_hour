@@ -2,13 +2,17 @@ import 'package:simple_hour/index.dart';
 import 'package:simple_hour/services/converter_service.dart';
 
 class TaskAdvanced extends StatelessWidget {
-  TaskAdvanced(this.task);
+  const TaskAdvanced({
+    required this.task,
+    this.onTap,
+  });
 
   final TaskModel task;
+  final void Function()? onTap;
 
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

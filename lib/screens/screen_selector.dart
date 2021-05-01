@@ -1,21 +1,23 @@
 import 'package:simple_hour/index.dart';
 
-
 class ScreenSelector extends StatelessWidget {
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: CustomColors.deeperBlue,
-      bottomNavigationBar: BottomNavigation(),
-      body: LayoutBuilder(
-        builder: (_, c) {
-          return GetBuilder<StopwatchStore>(
-            init: StopwatchStore(),
-            builder: (_) {
+    return GetBuilder<StopwatchStore>(
+      init: StopwatchStore(),
+      builder: (_) {
+        return Scaffold(
+          backgroundColor: CustomColors.deeperBlue,
+          bottomNavigationBar: BottomNavigation(
+            currentIndex: StopwatchStore.to.currentNavigationIndex,
+            onTap: BottomNavController().onNavigate,
+          ),
+          body: LayoutBuilder(
+            builder: (_, c) {
               return _pageSelector();
             },
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 
