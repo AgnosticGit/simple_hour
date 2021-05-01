@@ -1,3 +1,5 @@
+import 'package:simple_hour/index.dart';
+
 class TaskModel {
   TaskModel({
     this.name = '',
@@ -13,7 +15,7 @@ class TaskModel {
 
   TaskModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
-    duration = json['duration'];
+    duration = ConverterService.parseDuration(json['duration']);
     days = json['days'];
     done = json['done'];
   }
@@ -21,9 +23,9 @@ class TaskModel {
   Map<String, dynamic> toJson() {
     return {
       'name': name,
-      'duration': duration,
+      'duration': duration.toString(),
       'days': days,
-      'done': false
+      'done': false,
     };
   }
 }

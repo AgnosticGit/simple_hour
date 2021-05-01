@@ -1,4 +1,5 @@
 import 'package:simple_hour/index.dart';
+import 'package:simple_hour/services/hive_service.dart';
 import 'package:simple_hour/stores/upsert_task_store.dart';
 
 class UpsertFormController {
@@ -22,6 +23,8 @@ class UpsertFormController {
   void onSaveTask() {
     final task = UpsertTaskStore.to.task;
     StopwatchStore.to.incertTask(task);
+    final tasksJsonList = StopwatchStore.to.tasksJsonList;
+    HiveService.setTasks(tasksJsonList);
     Get.back();
   }
 }

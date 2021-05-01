@@ -8,9 +8,13 @@ class StopwatchStore extends Store {
   final double taskListItemHeight = 55.0;
   double taskListHeight = 55;
   List<TaskModel> tasks = [];
+  List<Map<String, dynamic>> get tasksJsonList =>
+      tasks.map((e) => e.toJson()).toList();
 
   void onReady() {
+    StopwatchController().loadTasks();
     TaskController().setTaskListHeightByListLength();
+
     super.onReady();
   }
 
@@ -28,5 +32,10 @@ class StopwatchStore extends Store {
     tasks.insert(0, task);
     update();
   }
-  
+
+  void setTasksByJsonList(List<Map<String, dynamic>> jsonList) {
+    final list = jsonList.map<TaskModel>((e) => TaskModel.fromJson(e)).toList();
+    tasks = list;
+    update();
+  }
 }

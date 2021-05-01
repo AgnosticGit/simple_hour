@@ -1,7 +1,7 @@
 import 'package:simple_hour/index.dart';
 
-
-void main() {
+void main() async {
+  await Hive.initFlutter();
   runApp(SimpleHour());
 }
 
