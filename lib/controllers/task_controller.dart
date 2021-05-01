@@ -1,6 +1,5 @@
 import 'package:simple_hour/index.dart';
 
-
 class TaskController {
   void setTaskListHeightByListLength() {
     int length = 3;
@@ -9,7 +8,12 @@ class TaskController {
     StopwatchStore.to.setTaskListHeight(taskListHeight);
   }
 
-  void onAddTask(){
+  void onAddTask() {
     Get.to(UpsertTaskScreen());
+  }
+
+  void onRemoveTask(TaskModel task) {
+    StopwatchStore.to.removeTask(task);
+    HiveService.removeTask(task);
   }
 }

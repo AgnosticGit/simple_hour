@@ -1,9 +1,13 @@
 import 'package:simple_hour/index.dart';
 
 class TaskSnap extends StatelessWidget {
-  const TaskSnap({required this.tasks});
+  const TaskSnap({
+    required this.tasks,
+    this.onTapTask,
+  });
 
   final List<TaskModel> tasks;
+  final void Function(TaskModel)? onTapTask;
 
   Widget build(BuildContext context) {
     return GetBuilder<StopwatchStore>(
@@ -15,6 +19,7 @@ class TaskSnap extends StatelessWidget {
             itemBuilder: (_, index) {
               return Task(
                 task: tasks[index],
+                onTap: onTapTask,
               );
             },
           ),

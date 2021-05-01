@@ -11,8 +11,10 @@ class StopwatchScreen extends StatelessWidget {
             padding: EdgeInsets.all(Get.width * 0.1),
             alignment: Alignment.center,
             child: AspectRatio(
-              aspectRatio: 1,
-              child: Stopwatch(),
+              aspectRatio: 1.0,
+              child: Stopwatch(
+                task: StopwatchStore.to.selectedTask,
+              ),
             ),
           ),
         ),
@@ -22,7 +24,10 @@ class StopwatchScreen extends StatelessWidget {
           height: 2.0,
         ),
         Expanded(
-          child: TaskSnap(tasks: StopwatchStore.to.tasks),
+          child: TaskSnap(
+            tasks: StopwatchStore.to.tasks,
+            onTapTask: StopwatchController().onSelectTask,
+          ),
         ),
       ],
     );

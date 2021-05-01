@@ -7,11 +7,11 @@ class Task extends StatelessWidget {
   });
 
   final TaskModel task;
-  final void Function()? onTap;
+  final void Function(TaskModel)? onTap;
 
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap == null ? null : () => onTap!(task),
       child: Container(
         padding: const EdgeInsets.all(15.0),
         child: Row(

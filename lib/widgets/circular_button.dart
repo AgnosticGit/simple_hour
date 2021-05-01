@@ -1,29 +1,29 @@
 import 'package:simple_hour/index.dart';
 
 class CircularButton extends StatelessWidget {
-  CircularButton({
+  const CircularButton({
     this.onTap,
-    this.icon,
+    this.child,
     this.size,
     this.color,
   });
 
   final Function()? onTap;
-  final Icon? icon;
   final double? size;
+  final Widget? child;
   final Color? color;
 
   Widget build(BuildContext context) {
     return ClipOval(
-      child: Material(
-        color: color,
-        child: InkWell(
-          child: SizedBox(
-            width: size ?? 30,
-            height: size ?? 30,
-            child: icon,
+      child: Container(
+        width: size,
+        height: size,
+        child: Material(
+          color: color,
+          child: InkWell(
+            child: child,
+            onTap: onTap,
           ),
-          onTap: onTap,
         ),
       ),
     );

@@ -18,4 +18,10 @@ class HiveService {
 
     return tasks;
   }
+
+  static Future removeTask(TaskModel task) async {
+    final tasks = await getTasks();
+    tasks.removeWhere((element) => element['id'] == task.id);
+    setTasks(tasks);
+  }
 }

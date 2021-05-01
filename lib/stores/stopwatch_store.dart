@@ -7,14 +7,16 @@ class StopwatchStore extends Store {
 
   final double taskListItemHeight = 55.0;
   double taskListHeight = 55;
+
   List<TaskModel> tasks = [];
   List<Map<String, dynamic>> get tasksJsonList =>
       tasks.map((e) => e.toJson()).toList();
+  TaskModel? get firstTask => tasks.length > 0 ? tasks[0] : null;
+  TaskModel? selectedTask;
 
   void onReady() {
-    StopwatchController().loadTasks();
+    StopwatchController().onScreenReady();
     TaskController().setTaskListHeightByListLength();
-
     super.onReady();
   }
 
@@ -28,6 +30,11 @@ class StopwatchStore extends Store {
     update();
   }
 
+  void removeTask(TaskModel task) {
+    tasks.removeWhere((element) => element.id == task.id);
+    update();
+  }
+
   void incertTask(TaskModel task) {
     tasks.insert(0, task);
     update();
@@ -36,6 +43,19 @@ class StopwatchStore extends Store {
   void setTasksByJsonList(List<Map<String, dynamic>> jsonList) {
     final list = jsonList.map<TaskModel>((e) => TaskModel.fromJson(e)).toList();
     tasks = list;
+    update();
+  }
+
+  int getLastIndex() {
+    int id = 0;
+    tasks.forEach((element) {
+      if (element.id > id) id = element.id;
+    });
+    return id;
+  }
+
+  void setSelectedTask(TaskModel? task) {
+    selectedTask = task;
     update();
   }
 }

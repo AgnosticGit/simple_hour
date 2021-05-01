@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:simple_hour/index.dart';
 
-
 class UpsertTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +11,7 @@ class UpsertTaskScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           GestureDetector(
-            onTap: UpsertFormController().onSaveTask,
+            onTap: UpsertController().onSaveTask,
             child: Padding(
               padding: const EdgeInsets.only(right: 10.0),
               child: Align(
@@ -29,12 +28,15 @@ class UpsertTaskScreen extends StatelessWidget {
         init: UpsertTaskStore(),
         builder: (_) {
           return SingleChildScrollView(
+            padding: const EdgeInsets.only(bottom: 40.0),
             child: Center(
               child: Container(
                 width: 300.0,
                 child: Column(
                   children: [
                     const SizedBox(height: 20.0),
+                    ErrorText(text: UpsertTaskStore.to.errors.name),
+                    const SizedBox(height: 10.0),
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.black,
@@ -49,10 +51,12 @@ class UpsertTaskScreen extends StatelessWidget {
                       ),
                       child: Input(
                         hintText: 'Enter Task Name',
-                        onChanged: UpsertFormController().onInputTaskName,
+                        onChanged: UpsertController().onInputTaskName,
                       ),
                     ),
-                    const SizedBox(height: 30.0),
+                    const SizedBox(height: 20.0),
+                    ErrorText(text: UpsertTaskStore.to.errors.days),
+                    const SizedBox(height: 10.0),
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.black,
@@ -71,7 +75,7 @@ class UpsertTaskScreen extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: WeekDay(
-                                  onTap: UpsertFormController().onPressWeekDay,
+                                  onTap: UpsertController().onPressWeekDay,
                                   checkBoxValue:
                                       UpsertTaskStore.to.task.days.contains(1),
                                   dayName: 'Mon',
@@ -80,7 +84,7 @@ class UpsertTaskScreen extends StatelessWidget {
                               ),
                               Expanded(
                                 child: WeekDay(
-                                  onTap: UpsertFormController().onPressWeekDay,
+                                  onTap: UpsertController().onPressWeekDay,
                                   checkBoxValue:
                                       UpsertTaskStore.to.task.days.contains(2),
                                   dayName: 'Tue',
@@ -93,7 +97,7 @@ class UpsertTaskScreen extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: WeekDay(
-                                  onTap: UpsertFormController().onPressWeekDay,
+                                  onTap: UpsertController().onPressWeekDay,
                                   checkBoxValue:
                                       UpsertTaskStore.to.task.days.contains(3),
                                   dayName: 'Wed',
@@ -102,7 +106,7 @@ class UpsertTaskScreen extends StatelessWidget {
                               ),
                               Expanded(
                                 child: WeekDay(
-                                  onTap: UpsertFormController().onPressWeekDay,
+                                  onTap: UpsertController().onPressWeekDay,
                                   checkBoxValue:
                                       UpsertTaskStore.to.task.days.contains(4),
                                   dayName: 'Thu',
@@ -115,7 +119,7 @@ class UpsertTaskScreen extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: WeekDay(
-                                  onTap: UpsertFormController().onPressWeekDay,
+                                  onTap: UpsertController().onPressWeekDay,
                                   checkBoxValue:
                                       UpsertTaskStore.to.task.days.contains(5),
                                   dayName: 'Fri',
@@ -124,7 +128,7 @@ class UpsertTaskScreen extends StatelessWidget {
                               ),
                               Expanded(
                                 child: WeekDay(
-                                  onTap: UpsertFormController().onPressWeekDay,
+                                  onTap: UpsertController().onPressWeekDay,
                                   checkBoxValue:
                                       UpsertTaskStore.to.task.days.contains(6),
                                   dayName: 'Sat',
@@ -137,7 +141,7 @@ class UpsertTaskScreen extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: WeekDay(
-                                  onTap: UpsertFormController().onPressWeekDay,
+                                  onTap: UpsertController().onPressWeekDay,
                                   checkBoxValue:
                                       UpsertTaskStore.to.task.days.contains(7),
                                   dayName: 'Sun',
@@ -150,7 +154,9 @@ class UpsertTaskScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 30.0),
+                    const SizedBox(height: 20.0),
+                    ErrorText(text: UpsertTaskStore.to.errors.duration),
+                    const SizedBox(height: 10.0),
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.black,
@@ -166,8 +172,9 @@ class UpsertTaskScreen extends StatelessWidget {
                       child: CupertinoTheme(
                         data: CupertinoThemeData(brightness: Brightness.dark),
                         child: CupertinoTimerPicker(
+                          initialTimerDuration: Duration(hours: 1),
                           onTimerDurationChanged:
-                              UpsertFormController().onChangeTimerPicker,
+                              UpsertController().onChangeTimerPicker,
                         ),
                       ),
                     ),
