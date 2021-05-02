@@ -4,10 +4,12 @@ class TaskSnap extends StatelessWidget {
   const TaskSnap({
     required this.tasks,
     this.onTapTask,
+    this.selectedTask,
   });
 
   final List<TaskModel> tasks;
   final void Function(TaskModel)? onTapTask;
+  final TaskModel? selectedTask; 
 
   Widget build(BuildContext context) {
     return GetBuilder<StopwatchStore>(

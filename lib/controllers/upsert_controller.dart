@@ -7,15 +7,6 @@ class UpsertController {
     UpsertTaskStore.to.setTaskName(name);
   }
 
-  void onPressWeekDay(int day) {
-    final days = UpsertTaskStore.to.task.days;
-    if (days.contains(day)) {
-      UpsertTaskStore.to.removeTaskDay(day);
-    } else {
-      UpsertTaskStore.to.setTaskDay(day);
-    }
-  }
-
   void onChangeTimerPicker(Duration duration) {
     UpsertTaskStore.to.setTaskDuration(duration);
     UpsertTaskStore.to.setTaskInitialDuration(duration);
@@ -33,9 +24,9 @@ class UpsertController {
     final task = UpsertTaskStore.to.task;
     UpsertTaskStore.to.clearErrors();
     if (task.nameIsEmpty) UpsertTaskStore.to.setNameError();
-    if (task.daysIsEmpty) UpsertTaskStore.to.setDaysError();
+
     if (task.durationIsZero) UpsertTaskStore.to.setDurationError();
-    return task.nameIsEmpty || task.daysIsEmpty || task.durationIsZero;
+    return task.nameIsEmpty || task.durationIsZero;
   }
 
   void _saveToStore() {

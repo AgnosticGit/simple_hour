@@ -1,3 +1,5 @@
+import 'package:simple_hour/index.dart';
+
 class ConverterService {
   static String getHumanityDuration(Duration duration) {
     final dur = duration.toString().split(':');
@@ -20,5 +22,13 @@ class ConverterService {
     }
     micros = (double.parse(parts[parts.length - 1]) * 1000000).round();
     return Duration(hours: hours, minutes: minutes, microseconds: micros);
+  }
+
+  static String getDateFromDateTime(DateTime datetime) {
+    return datetime.toString().split(' ').first;
+  }
+
+  static List<Map<String, dynamic>> getTasksJsonList(List<TaskModel> tasks) {
+    return tasks.map((e) => e.toJson()).toList();
   }
 }

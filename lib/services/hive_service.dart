@@ -10,12 +10,10 @@ class HiveService {
     final tasksBox = await Hive.openBox('tasks');
     if (tasksBox.isEmpty) return [];
 
-    final t = await Hive.openBox('name');
     final tasksNonTyped = await tasksBox.get('tasks');
     final tasks = tasksNonTyped
         .map<Map<String, dynamic>>((e) => Map<String, dynamic>.from(e))
         .toList();
-
     return tasks;
   }
 
@@ -23,5 +21,21 @@ class HiveService {
     final tasks = await getTasks();
     tasks.removeWhere((element) => element['id'] == task.id);
     setTasks(tasks);
+  }
+
+  static Future setStatistics(List<Map<String, dynamic>> newStats) async {
+    final statsBox = await Hive.openBox('statistics');
+    await statsBox.put('statistics', newStats);
+  }
+
+  static Future<List<Map<String, dynamic>>> getStatistics() async {
+    final statsBox = await Hive.openBox('statistics');
+    if (statsBox.isEmpty) return [];
+
+    final statsNonTyped = await statsBox.get('statistics');
+    final stats = statsNonTyped
+        .map<Map<String, dynamic>>((e) => Map<String, dynamic>.from(e))
+        .toList();
+    return stats;
   }
 }

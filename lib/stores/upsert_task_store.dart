@@ -3,7 +3,7 @@ import 'package:simple_hour/index.dart';
 class UpsertTaskStore extends Store {
   static UpsertTaskStore get to => Get.put(UpsertTaskStore());
 
-  TaskModel task = TaskModel(id: StopwatchStore.to.getLastIndex(), days: []);
+  TaskModel task = TaskModel(id: StopwatchStore.to.getLastIndex());
   UpsertErrorsModel errors = UpsertErrorsModel();
 
   void setTaskName(String name) {
@@ -18,16 +18,6 @@ class UpsertTaskStore extends Store {
 
   void setTaskInitialDuration(Duration duration) {
     task.initialDuration = duration;
-    update();
-  }
-
-  void setTaskDay(int day) {
-    task.days.add(day);
-    update();
-  }
-
-  void removeTaskDay(int day) {
-    task.days.remove(day);
     update();
   }
 

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:simple_hour/controllers/statistics_controller.dart';
 import 'package:simple_hour/index.dart';
 
 class StopwatchController {
@@ -49,6 +50,7 @@ class StopwatchController {
         int seconds = selectedTask.duration.inSeconds;
         if (seconds > 0) {
           StopwatchStore.to.decreaseSelectedTaskDurationForSecond();
+          StatisticsController().saveStatistics();
           _saveToHive();
         } else {
           StopwatchStore.to.timer?.cancel();

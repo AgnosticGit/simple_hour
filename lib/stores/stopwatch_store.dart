@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:simple_hour/controllers/statistics_controller.dart';
 import 'package:simple_hour/index.dart';
 
 class StopwatchStore extends Store {
@@ -14,12 +14,17 @@ class StopwatchStore extends Store {
   List<Map<String, dynamic>> get tasksJsonList =>
       tasks.map((e) => e.toJson()).toList();
   TaskModel? get firstTask => tasks.length > 0 ? tasks[0] : null;
+
   TaskModel? selectedTask;
+
   Timer? timer;
+
+  List<StatitsticsModel> statistics = [];
 
   void onReady() {
     StopwatchController().onScreenReady();
     TaskController().setTaskListHeightByListLength();
+    StatisticsController().loadStatistics();
     super.onReady();
   }
 
@@ -75,6 +80,16 @@ class StopwatchStore extends Store {
   void decreaseSelectedTaskDurationForSecond() {
     int seconds = selectedTask!.duration.inSeconds;
     selectedTask?.duration = Duration(seconds: --seconds);
+    update();
+  }
+
+  void addStatsToStatistics(StatitsticsModel model) {
+    statistics.add(model);
+    update();
+  }
+
+  void rewriteLastStatsInStatistics(StatitsticsModel model) {
+    statistics.last = model;
     update();
   }
 }

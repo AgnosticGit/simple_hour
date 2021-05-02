@@ -6,19 +6,17 @@ class TaskModel {
     this.name = '',
     this.duration = const Duration(hours: 1),
     this.initialDuration = const Duration(hours: 1),
-    required this.days,
   });
 
   int id = 0;
   String name = '';
   Duration initialDuration = const Duration(hours: 1);
   Duration duration = const Duration(hours: 1);
-  List<int> days = [];
+  
   TaskState state = TaskState.play;
 
   bool get done => duration.inSeconds == 0;
-  bool get nameIsEmpty => name == '';
-  bool get daysIsEmpty => days.length == 0;
+  bool get nameIsEmpty => name == ''; 
   bool get durationIsZero => duration.inSeconds == 0;
 
   TaskModel.fromJson(Map<String, dynamic> json) {
@@ -26,7 +24,6 @@ class TaskModel {
     name = json['name'];
     initialDuration = ConverterService.parseDuration(json['initial_duration']);
     duration = ConverterService.parseDuration(json['duration']);
-    days = json['days'];
   }
 
   Map<String, dynamic> toJson() {
@@ -35,7 +32,6 @@ class TaskModel {
       'name': name,
       'initial_duration': initialDuration.toString(),
       'duration': duration.toString(),
-      'days': days,
       'done': false,
     };
   }

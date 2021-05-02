@@ -31,3 +31,4 @@ export 'package:hive_flutter/hive_flutter.dart';
 export 'package:simple_hour/models/upsert_errors_model.dart';
 export 'package:simple_hour/widgets/error_text.dart';
 export 'package:simple_hour/utils/enums.dart';
+export 'package:simple_hour/models/statistics_model.dart';
