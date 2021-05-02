@@ -18,6 +18,7 @@ class UpsertController {
 
   void onChangeTimerPicker(Duration duration) {
     UpsertTaskStore.to.setTaskDuration(duration);
+    UpsertTaskStore.to.setTaskInitialDuration(duration);
   }
 
   void onSaveTask() {

@@ -16,6 +16,11 @@ class UpsertTaskStore extends Store {
     update();
   }
 
+  void setTaskInitialDuration(Duration duration) {
+    task.initialDuration = duration;
+    update();
+  }
+
   void setTaskDay(int day) {
     task.days.add(day);
     update();

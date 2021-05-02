@@ -52,20 +52,9 @@ class Stopwatch extends StatelessWidget {
           ),
           Expanded(
             flex: 4,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircularButton(
-                  
-                  child: Icon(
-                    Icons.play_arrow_outlined,
-                  
-                    size: 50.0,
-                  ),
-                  onTap: () {},
-                ),
-              ],
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: _buildButton(),
             ),
           )
         ],
@@ -75,7 +64,37 @@ class Stopwatch extends StatelessWidget {
     return const SizedBox();
   }
 
-  Widget _buildButton(){
-    return SizedBox();
+  Widget _buildButton() {
+    if (task!.done) {
+      return CircularButton(
+        size: 50.0,
+        child: Icon(
+          Icons.refresh,
+          size: 40.0,
+        ),
+        onTap: onTapRefresh,
+      );
+    }
+    if (task?.state == TaskState.play) {
+      return CircularButton(
+        child: Icon(
+          Icons.play_arrow_outlined,
+          size: 50.0,
+        ),
+        onTap: onTapPlay,
+      );
+    }
+    if (task?.state == TaskState.pause) {
+      return CircularButton(
+        size: 50.0,
+        child: Icon(
+          Icons.pause,
+          size: 40.0,
+        ),
+        onTap: onTapPause,
+      );
+    }
+
+    return const SizedBox();
   }
 }

@@ -33,9 +33,10 @@ class TaskAdvanced extends StatelessWidget {
             children: [
               CircularButton(
                 color: Colors.blue,
+                size: 30.0,
                 child: Icon(
                   Icons.edit,
-                  size: 15,
+                  size: 20.0,
                   color: Colors.white,
                 ),
                 onTap: () {},
@@ -43,9 +44,10 @@ class TaskAdvanced extends StatelessWidget {
               const SizedBox(width: 15.0),
               CircularButton(
                 color: Colors.red,
+                size: 30.0,
                 child: Icon(
                   Icons.delete,
-                  size: 15,
+                  size: 20.0,
                   color: Colors.white,
                 ),
                 onTap: () => TaskController().onRemoveTask(task),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:simple_hour/index.dart';
 
 class StopwatchStore extends Store {
@@ -13,6 +15,7 @@ class StopwatchStore extends Store {
       tasks.map((e) => e.toJson()).toList();
   TaskModel? get firstTask => tasks.length > 0 ? tasks[0] : null;
   TaskModel? selectedTask;
+  Timer? timer;
 
   void onReady() {
     StopwatchController().onScreenReady();
@@ -56,6 +59,22 @@ class StopwatchStore extends Store {
 
   void setSelectedTask(TaskModel? task) {
     selectedTask = task;
+    update();
+  }
+
+  void setSelectedTaskState(TaskState state) {
+    selectedTask?.state = state;
+    update();
+  }
+
+  void setSelectedTaskDuration(Duration duration) {
+    selectedTask?.duration = duration;
+    update();
+  }
+
+  void decreaseSelectedTaskDurationForSecond() {
+    int seconds = selectedTask!.duration.inSeconds;
+    selectedTask?.duration = Duration(seconds: --seconds);
     update();
   }
 }

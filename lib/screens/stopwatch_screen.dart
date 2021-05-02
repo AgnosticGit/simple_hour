@@ -13,6 +13,9 @@ class StopwatchScreen extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 1.0,
               child: Stopwatch(
+                onTapPlay: StopwatchController().onTapPlay,
+                onTapPause: StopwatchController().onTapPause,
+                onTapRefresh: StopwatchController().onTapRefresh,
                 task: StopwatchStore.to.selectedTask,
               ),
             ),

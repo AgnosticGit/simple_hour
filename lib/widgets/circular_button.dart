@@ -6,12 +6,14 @@ class CircularButton extends StatelessWidget {
     this.child,
     this.size,
     this.color,
+    this.splashColor,
   });
 
   final Function()? onTap;
   final double? size;
   final Widget? child;
   final Color? color;
+  final Color? splashColor;
 
   Widget build(BuildContext context) {
     return ClipOval(
@@ -21,6 +23,7 @@ class CircularButton extends StatelessWidget {
         child: Material(
           color: color,
           child: InkWell(
+            splashColor: splashColor,
             child: child,
             onTap: onTap,
           ),

@@ -8,6 +8,7 @@ void main() async {
 class SimpleHour extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       home: ScreenSelector(),
     );
   }

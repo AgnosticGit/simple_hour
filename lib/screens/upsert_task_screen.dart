@@ -172,7 +172,7 @@ class UpsertTaskScreen extends StatelessWidget {
                       child: CupertinoTheme(
                         data: CupertinoThemeData(brightness: Brightness.dark),
                         child: CupertinoTimerPicker(
-                          initialTimerDuration: Duration(hours: 1),
+                          initialTimerDuration: const Duration(hours: 1),
                           onTimerDurationChanged:
                               UpsertController().onChangeTimerPicker,
                         ),
