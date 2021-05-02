@@ -1,8 +1,10 @@
 import 'package:simple_hour/index.dart';
 
 class StatisticsController {
-  void loadStatistics() async{
-    print(await HiveService.getStatistics());
+  void loadStatistics() async {
+    final rawStats = await HiveService.getStatistics();
+    final stats = rawStats.map((el) => StatitsticsModel.fromJson(el)).toList();
+    StopwatchStore.to.setStatistics(stats);
   }
 
   void saveStatistics() {

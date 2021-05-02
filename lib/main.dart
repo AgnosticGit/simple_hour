@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:simple_hour/index.dart';
 
 void main() async {

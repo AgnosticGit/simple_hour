@@ -5,6 +5,10 @@ class StatisticsScreen extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
+        Container(
+          height: 300,
+          child: StatsCharts(),
+        ),
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
@@ -13,10 +17,8 @@ class StatisticsScreen extends StatelessWidget {
               tasks: StopwatchStore.to.tasks,
             ),
           ),
-        )
+        ),
       ],
     );
   }
-
-  
 }

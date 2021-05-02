@@ -54,6 +54,11 @@ class StopwatchStore extends Store {
     update();
   }
 
+  void setStatistics(List<StatitsticsModel> stats) {
+    statistics = List.from(stats);
+    update();
+  }
+
   int getLastIndex() {
     int id = 0;
     tasks.forEach((element) {

@@ -32,3 +32,6 @@ export 'package:simple_hour/models/upsert_errors_model.dart';
 export 'package:simple_hour/widgets/error_text.dart';
 export 'package:simple_hour/utils/enums.dart';
 export 'package:simple_hour/models/statistics_model.dart';
+export 'package:simple_hour/controllers/statistics_controller.dart';
+export 'package:simple_hour/widgets/stats_charts.dart';
+

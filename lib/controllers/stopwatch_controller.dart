@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:simple_hour/controllers/statistics_controller.dart';
 import 'package:simple_hour/index.dart';
 
 class StopwatchController {
