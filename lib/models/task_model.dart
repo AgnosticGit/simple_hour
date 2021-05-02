@@ -10,6 +10,7 @@ class TaskModel {
 
   int id = 0;
   String name = '';
+  DateTime? date;
   Duration initialDuration = const Duration(hours: 1);
   Duration duration = const Duration(hours: 1);
   

@@ -1,41 +1,41 @@
 import 'package:simple_hour/index.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class StatsCharts extends StatelessWidget {
-  @override
   Widget build(BuildContext context) {
-    return charts.BarChart(
-      _createSampleData(),
-      barRendererDecorator: charts.BarLabelDecorator<String>(
-        outsideLabelStyleSpec: charts.TextStyleSpec(color: charts.Color.white),
-      ),
-      domainAxis: charts.OrdinalAxisSpec(),
+    return SfCartesianChart(
+      primaryXAxis: CategoryAxis(),
+      primaryYAxis: NumericAxis(labelFormat: "{value}h"),
+      series: _createSampleData(),
     );
   }
 
-  static List<charts.Series<OrdinalSales, String>> _createSampleData() {
-    final data = [
-      OrdinalSales('2014', 5),
-      OrdinalSales('2015', 25),
-      OrdinalSales('2016', 100),
-      OrdinalSales('2017', 75),
-    ];
+  static List<ColumnSeries> _createSampleData() {
+    final data = StopwatchStore.to.statistics;
+    final List<TaskModel> newModels = [];
 
-    return [
-      charts.Series<OrdinalSales, String>(
-        id: 'Sales',
-        domainFn: (OrdinalSales sales, _) => sales.year,
-        measureFn: (OrdinalSales sales, _) => sales.sales,
-        data: data,
-        labelAccessorFn: (OrdinalSales sales, _) => '${sales.sales.toString()}',
-      )
-    ];
+    data.forEach((stats) {
+      stats.tasks.forEach((task) {
+        task.date = stats.date;
+        newModels.add(task);
+      });
+    });
+
+    return newModels.map((task) {
+      return ColumnSeries<TaskModel, String>(
+        dataSource: newModels,
+        xValueMapper: (m, _) => task.date.toString().split(' ').first,
+        yValueMapper: (m, _) => Duration(
+          seconds:
+              (task.duration.inSeconds - task.initialDuration.inSeconds).abs(),
+        ).inSeconds,
+        dataLabelMapper: (m, _) => task.name,
+        dataLabelSettings: DataLabelSettings(
+          isVisible: true,
+          color: Colors.white,
+          labelAlignment: ChartDataLabelAlignment.top,
+        ),
+      );
+    }).toList();
   }
-}
-
-class OrdinalSales {
-  final String year;
-  final int sales;
-
-  OrdinalSales(this.year, this.sales);
 }

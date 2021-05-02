@@ -16,6 +16,7 @@ class StopwatchScreen extends StatelessWidget {
                 onTapPlay: StopwatchController().onTapPlay,
                 onTapPause: StopwatchController().onTapPause,
                 onTapRefresh: StopwatchController().onTapRefresh,
+                onTapCreate: TaskController().onAddTask,
                 task: StopwatchStore.to.selectedTask,
               ),
             ),

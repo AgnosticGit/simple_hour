@@ -14,46 +14,34 @@ class TaskAdvanced extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            children: [
-              const SizedBox(width: 15.0),
-              Text(
-                task.name,
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
+          const SizedBox(width: 15.0),
+          Expanded(
+            child: Text(
+              task.name,
+              style: TextStyle(color: Colors.white),
+            ),
           ),
-          Text(
-            ConverterService.getHumanityDuration(task.duration),
-            style: TextStyle(color: Colors.white),
+          const SizedBox(width: 10.0),
+          Expanded(
+            child: Text(
+              ConverterService.getHumanityDuration(task.duration),
+              style: TextStyle(color: Colors.white),
+            ),
           ),
-          Row(
-            children: [
-              CircularButton(
-                color: Colors.blue,
-                size: 30.0,
-                child: Icon(
-                  Icons.edit,
-                  size: 20.0,
-                  color: Colors.white,
-                ),
-                onTap: () {},
-              ),
-              const SizedBox(width: 15.0),
-              CircularButton(
-                color: Colors.red,
-                size: 30.0,
-                child: Icon(
-                  Icons.delete,
-                  size: 20.0,
-                  color: Colors.white,
-                ),
-                onTap: () => TaskController().onRemoveTask(task),
-              ),
-            ],
-          )
+          const SizedBox(width: 10.0),
+          CircularButton(
+            color: Colors.red,
+            size: 30.0,
+            child: Icon(
+              Icons.delete,
+              size: 20.0,
+              color: Colors.white,
+            ),
+            onTap: () => TaskController().onRemoveTask(task),
+          ),
+          const SizedBox(width: 10.0),
         ],
       ),
     );

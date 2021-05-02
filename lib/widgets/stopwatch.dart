@@ -1,17 +1,18 @@
 import 'package:simple_hour/index.dart';
 
 class Stopwatch extends StatelessWidget {
-  const Stopwatch({
-    this.task,
-    this.onTapPlay,
-    this.onTapPause,
-    this.onTapRefresh,
-  });
+  const Stopwatch(
+      {this.task,
+      this.onTapPlay,
+      this.onTapPause,
+      this.onTapRefresh,
+      this.onTapCreate});
 
   final TaskModel? task;
   final void Function()? onTapPlay;
   final void Function()? onTapPause;
   final void Function()? onTapRefresh;
+  final void Function()? onTapCreate;
 
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +37,16 @@ class Stopwatch extends StatelessWidget {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(flex: 4, child: const SizedBox()),
+          Expanded(
+            flex: 3,
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                task!.name,
+                style: TextStyle(color: Colors.white, fontSize: 18.0),
+              ),
+            ),
+          ),
           Expanded(
             flex: 4,
             child: Container(
@@ -51,7 +61,7 @@ class Stopwatch extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 3,
             child: Align(
               alignment: Alignment.topCenter,
               child: _buildButton(),
@@ -61,7 +71,16 @@ class Stopwatch extends StatelessWidget {
       );
     }
 
-    return const SizedBox();
+    return CircularButton(
+      color: Colors.transparent,
+      onTap: onTapCreate,
+      splashColor: Colors.orange,
+      child: Icon(
+        Icons.add,
+        color: Colors.white,
+        size: 100.0,
+      ),
+    );
   }
 
   Widget _buildButton() {

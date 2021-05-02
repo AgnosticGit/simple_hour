@@ -3,7 +3,7 @@ import 'package:simple_hour/index.dart';
 class UpsertTaskStore extends Store {
   static UpsertTaskStore get to => Get.put(UpsertTaskStore());
 
-  TaskModel task = TaskModel(id: StopwatchStore.to.getLastIndex());
+  TaskModel task = TaskModel(id: StopwatchStore.to.getLastIndex() + 1);
   UpsertErrorsModel errors = UpsertErrorsModel();
 
   void setTaskName(String name) {
@@ -23,11 +23,6 @@ class UpsertTaskStore extends Store {
 
   void setNameError() {
     errors.name = 'Field name must not be empty';
-    update();
-  }
-
-  void setDaysError() {
-    errors.days = 'Choose at least one day';
     update();
   }
 

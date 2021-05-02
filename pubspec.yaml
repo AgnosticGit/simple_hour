@@ -17,7 +17,8 @@ dependencies:
   flutter_snake_navigationbar: ^0.5.0
   hive: ^2.0.4
   hive_flutter: ^1.0.0
-  charts_flutter: ^0.10.0
+  syncfusion_flutter_charts: ^19.1.58
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
