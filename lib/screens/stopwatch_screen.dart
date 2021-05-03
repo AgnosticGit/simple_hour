@@ -22,10 +22,11 @@ class StopwatchScreen extends StatelessWidget {
             ),
           ),
         ),
-        Container(
+        CustomDivider(
           margin: EdgeInsets.symmetric(horizontal: Get.width * 0.1),
           color: Colors.white,
           height: 2.0,
+          visible: StopwatchStore.to.tasks.length > 0,
         ),
         Expanded(
           child: TaskSnap(

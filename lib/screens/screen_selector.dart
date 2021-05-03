@@ -11,6 +11,12 @@ class ScreenSelector extends StatelessWidget {
             currentIndex: StopwatchStore.to.currentNavigationIndex,
             onTap: BottomNavController().onNavigate,
           ),
+          floatingActionButton: StopwatchStore.to.currentNavigationIndex == 2
+              ? FloatingActionButton.extended(
+                  onPressed: TaskController().onAddTask,
+                  label: Text('Add Task'),
+                )
+              : null,
           body: LayoutBuilder(
             builder: (_, c) {
               return _pageSelector();

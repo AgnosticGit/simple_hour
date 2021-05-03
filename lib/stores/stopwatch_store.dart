@@ -21,7 +21,7 @@ class StopwatchStore extends Store {
 
   List<StatitsticsModel> statistics = [];
 
-  ChartsYAxisFormat format = ChartsYAxisFormat.hour;
+  ChartsYAxisFormat format = ChartsYAxisFormat.minute;
 
   void onReady() {
     StopwatchController().onScreenReady();

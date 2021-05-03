@@ -32,4 +32,19 @@ class ConverterService {
     return tasks.map((e) => e.toJson()).toList();
   }
 
+  static num getFormatFromSeconds(num seconds, ChartsYAxisFormat format) {
+    if (format == ChartsYAxisFormat.minute) {
+      return double.parse((seconds / 60).toStringAsFixed(1));
+    }
+    if (format == ChartsYAxisFormat.hour) {
+      return double.parse((seconds / 3600).toStringAsFixed(1));
+    }
+    return seconds;
+  }
+
+  static String getDependFilterLabelFormat(ChartsYAxisFormat format) {
+    if (format == ChartsYAxisFormat.hour) return "{value}h";
+    if (format == ChartsYAxisFormat.minute) return "{value}m";
+    return "{value}s";
+  }
 }

@@ -9,19 +9,12 @@ class TaskManager extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: ElevatedButton(
-              onPressed: TaskController().onAddTask,
-              child: Icon(Icons.add),
-            ),
-          ),
-          const SizedBox(height: 10.0),
           Expanded(
             child: ListView.separated(
+              padding: const EdgeInsets.only(bottom: 80.0, top: 5.0),
               separatorBuilder: (c, _) => SizedBox(height: 15.0),
               itemCount: StopwatchStore.to.tasks.length,
               itemBuilder: (_, index) {

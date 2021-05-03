@@ -44,10 +44,12 @@ class StatisticsScreen extends StatelessWidget {
             ],
           ),
         ),
-        Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: Get.width * 0.1,
-            vertical: 10.0,
+        CustomDivider(
+          margin: EdgeInsets.only(
+            right: Get.width * 0.1,
+            left: Get.width * 0.1,
+            top: 20.0,
+            bottom: 5.0,
           ),
           color: Colors.white,
           height: 2.0,
