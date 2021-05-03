@@ -17,6 +17,15 @@ class StopwatchController {
     StopwatchStore.to.setSelectedTask(firstTask);
   }
 
+  void onSetLastTask() {
+    final tasks = StopwatchStore.to.tasks;
+    if (tasks.length == 0) {
+      StopwatchStore.to.setSelectedTask(null);
+    } else {
+      StopwatchStore.to.setSelectedTask(tasks.last);
+    }
+  }
+
   void onSelectTask(TaskModel task) {
     StopwatchStore.to.setSelectedTask(task);
   }

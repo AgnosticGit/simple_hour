@@ -13,7 +13,7 @@ class StatisticsController {
   }
 
   void _saveStatisticstToStore() {
-    final tasks = StopwatchStore.to.tasks;
+    final tasks = List<TaskModel>.from(StopwatchStore.to.tasks);
     final stats = StatitsticsModel(tasks: tasks);
     final statistics = StopwatchStore.to.statistics;
     final date = ConverterService.getDateFromDateTime(stats.date);
@@ -35,5 +35,9 @@ class StatisticsController {
     final statistics = StopwatchStore.to.statistics;
     final stats = statistics.map((el) => el.toJson()).toList();
     HiveService.setStatistics(stats);
+  }
+
+  void onChangeFilter(ChartsYAxisFormat? format) {
+    StopwatchStore.to.setFormat(format!);
   }
 }

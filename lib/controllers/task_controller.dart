@@ -14,6 +14,8 @@ class TaskController {
 
   void onRemoveTask(TaskModel task) {
     StopwatchStore.to.removeTask(task);
+    StopwatchStore.to.removeStatsByTask(task);
+    HiveService.removeStatsByTask(task);
     HiveService.removeTask(task);
   }
 }

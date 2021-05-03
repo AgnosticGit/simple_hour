@@ -19,6 +19,7 @@ class TaskManager extends StatelessWidget {
               child: Icon(Icons.add),
             ),
           ),
+          const SizedBox(height: 10.0),
           Expanded(
             child: ListView.separated(
               separatorBuilder: (c, _) => SizedBox(height: 15.0),

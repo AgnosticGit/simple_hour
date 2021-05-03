@@ -38,4 +38,12 @@ class HiveService {
         .toList();
     return stats;
   }
+
+  static Future removeStatsByTask(TaskModel task) async {
+    final stats = await getStatistics();
+    stats.forEach((stat) {
+      stat['tasks'].removeWhere((t) => t['id'] == task.id);
+    });
+    setStatistics(stats);
+  }
 }

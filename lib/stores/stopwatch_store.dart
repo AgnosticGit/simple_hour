@@ -21,6 +21,8 @@ class StopwatchStore extends Store {
 
   List<StatitsticsModel> statistics = [];
 
+  ChartsYAxisFormat format = ChartsYAxisFormat.hour;
+
   void onReady() {
     StopwatchController().onScreenReady();
     TaskController().setTaskListHeightByListLength();
@@ -95,6 +97,18 @@ class StopwatchStore extends Store {
 
   void rewriteLastStatsInStatistics(StatitsticsModel model) {
     statistics.last = model;
+    update();
+  }
+
+  void setFormat(ChartsYAxisFormat newFormat) {
+    format = newFormat;
+    update();
+  }
+
+  void removeStatsByTask(TaskModel task) {
+    statistics.forEach((s) {
+      s.tasks.removeWhere((t) => t.id == task.id);
+    });
     update();
   }
 }
