@@ -1,3 +1,4 @@
+
 import 'package:simple_hour/index.dart';
 
 class StatitsticsModel {
@@ -23,4 +24,7 @@ class StatitsticsModel {
       "tasks": ConverterService.getTasksJsonList(tasks),
     };
   }
+
+  @override
+  String toString() => jsonEncode(toJson());
 }

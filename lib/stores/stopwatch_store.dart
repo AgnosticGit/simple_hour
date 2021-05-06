@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:simple_hour/modules/statistics/statistics_controller.dart';
+import 'package:simple_hour/modules/statistics/statistics_screen_controller.dart';
 import 'package:simple_hour/index.dart';
 
 class StopwatchStore extends Store {

@@ -13,9 +13,9 @@ class StopwatchScreen extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 1.0,
               child: Stopwatch(
-                onTapPlay: StopwatchController().onTapPlay,
-                onTapPause: StopwatchController().onTapPause,
-                onTapRefresh: StopwatchController().onTapRefresh,
+                onTapPlay: StopwatchScreenController().onTapPlay,
+                onTapPause: StopwatchScreenController().onTapPause,
+                onTapRefresh: StopwatchScreenController().onTapRefresh,
                 task: StopwatchStore.to.selectedTask,
                 emptyTask: CircularButton(
                   color: Colors.transparent,
@@ -46,7 +46,7 @@ class StopwatchScreen extends StatelessWidget {
             tasks: StopwatchStore.to.tasks,
             selectedBorderColor: Colors.orange,
             borderColor: Colors.white,
-            onTapTask: StopwatchController().onSelectTask,
+            onTapTask: StopwatchScreenController().onSelectTask,
           ),
         ),
       ],

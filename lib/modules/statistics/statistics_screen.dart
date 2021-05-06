@@ -36,7 +36,7 @@ class StatisticsScreen extends StatelessWidget {
                       ),
                     )
                   },
-                  onValueChanged: StatisticsController().onChangeFilter,
+                  onValueChanged: StatisticsScreenController().onChangeFilter,
                 ),
               ),
               const SizedBox(height: 20.0),

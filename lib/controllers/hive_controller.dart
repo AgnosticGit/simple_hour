@@ -10,4 +10,16 @@ class HiveController {
     final tasksJsonList = StopwatchStore.to.tasksJsonList;
     HiveService.setTasks(tasksJsonList);
   }
+
+  void setStatisticsToHive() {
+    final statistics = StopwatchStore.to.statistics;
+    final stats = statistics.map((el) => el.toJson()).toList();
+    HiveService.setStatistics(stats);
+  }
+
+  void setStatisticsToStore() async {
+    final rawStats = await HiveService.getStatistics();
+    final stats = rawStats.map((el) => StatitsticsModel.fromJson(el)).toList();
+    StopwatchStore.to.setStatistics(stats);
+  }
 }

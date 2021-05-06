@@ -1,4 +1,3 @@
-
 import 'package:simple_hour/index.dart';
 
 class ScreenSelector extends StatelessWidget {
@@ -11,7 +10,7 @@ class ScreenSelector extends StatelessWidget {
           backgroundColor: CustomColors.deeperBlue,
           bottomNavigationBar: BottomNavigation(
             currentIndex: StopwatchStore.to.currentNavigationIndex,
-            onTap: BottomNavController().onNavigate,
+            onTap: ScreenSelectorController().onNavigate,
           ),
           floatingActionButton: StopwatchStore.to.currentNavigationIndex == 2
               ? FloatingActionButton.extended(

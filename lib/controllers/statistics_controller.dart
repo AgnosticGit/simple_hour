@@ -1,18 +1,7 @@
 import 'package:simple_hour/index.dart';
 
 class StatisticsController {
-  void setStatisticsToStore() async {
-    final rawStats = await HiveService.getStatistics();
-    final stats = rawStats.map((el) => StatitsticsModel.fromJson(el)).toList();
-    StopwatchStore.to.setStatistics(stats);
-  }
-
-  void saveStatistics() {
-    _saveStatisticstToStore();
-    _saveStatisticsToHive();
-  }
-
-  void _saveStatisticstToStore() {
+  void setStatisticstToStore() {
     final tasks = List<TaskModel>.from(StopwatchStore.to.tasks);
     final stats = StatitsticsModel(tasks: tasks);
     final statistics = StopwatchStore.to.statistics;
@@ -29,15 +18,5 @@ class StatisticsController {
         StopwatchStore.to.addStatsToStatistics(stats);
       }
     }
-  }
-
-  void _saveStatisticsToHive() {
-    final statistics = StopwatchStore.to.statistics;
-    final stats = statistics.map((el) => el.toJson()).toList();
-    HiveService.setStatistics(stats);
-  }
-
-  void onChangeFilter(ChartsYAxisFormat? format) {
-    StopwatchStore.to.setFormat(format!);
   }
 }

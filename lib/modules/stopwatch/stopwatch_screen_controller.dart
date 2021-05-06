@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:simple_hour/index.dart';
 
-class StopwatchController {
+class StopwatchScreenController {
   void onSelectTask(TaskModel task) {
     StopwatchStore.to.setSelectedTask(task);
   }
@@ -33,7 +33,7 @@ class StopwatchController {
         int seconds = selectedTask.duration.inSeconds;
         if (seconds > 0) {
           StopwatchStore.to.decreaseSelectedTaskDurationForSecond();
-          StatisticsController().saveStatistics();
+          StatisticsScreenController().saveStatistics();
           HiveController().setRawTasksToHive();
         } else {
           StopwatchStore.to.timer?.cancel();

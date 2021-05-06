@@ -13,11 +13,11 @@ class TaskModel {
   DateTime? date;
   Duration initialDuration = const Duration(hours: 1);
   Duration duration = const Duration(hours: 1);
-  
+
   TaskState state = TaskState.play;
 
   bool get done => duration.inSeconds == 0;
-  bool get nameIsEmpty => name == ''; 
+  bool get nameIsEmpty => name == '';
   bool get durationIsZero => duration.inSeconds == 0;
 
   TaskModel.fromJson(Map<String, dynamic> json) {
@@ -36,4 +36,7 @@ class TaskModel {
       'done': false,
     };
   }
+
+  @override
+  String toString() => jsonEncode(toJson());
 }
