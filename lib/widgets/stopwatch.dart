@@ -57,7 +57,7 @@ class Stopwatch extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               child: Text(
-                ConverterService.getHumanityDuration(task!.duration),
+                ConverterService.getHumanityDuration(task!.currentDuration),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: Get.width * 0.1,

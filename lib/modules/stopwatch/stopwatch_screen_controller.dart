@@ -21,7 +21,9 @@ class StopwatchScreenController {
   void onTapRefresh() {
     final selectedTask = StopwatchStore.to.selectedTask;
     StopwatchStore.to.setSelectedTaskState(TaskState.play);
-    StopwatchStore.to.setSelectedTaskDuration(selectedTask!.initialDuration);
+    StopwatchStore.to.setSelectedTaskCurrentDuration(
+      selectedTask!.initialDuration,
+    );
     _startTimer();
   }
 
@@ -30,9 +32,10 @@ class StopwatchScreenController {
       final selectedTask = StopwatchStore.to.selectedTask;
 
       if (selectedTask!.state == TaskState.pause) {
-        int seconds = selectedTask.duration.inSeconds;
+        int seconds = selectedTask.currentDuration.inSeconds;
         if (seconds > 0) {
-          StopwatchStore.to.decreaseSelectedTaskDurationForSecond();
+          StopwatchStore.to.decreaseSelectedTaskCurrentDurationForSecond();
+          StopwatchStore.to.increaseSelectedTaskTotalDurationForSecond();
           StatisticsScreenController().saveStatistics();
           HiveController().setRawTasksToHive();
         } else {

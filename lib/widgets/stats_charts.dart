@@ -30,7 +30,7 @@ class StatsCharts extends StatelessWidget {
         dataSource: newModels,
         xValueMapper: (m, _) => task.date.toString().split(' ').first,
         yValueMapper: (m, _) => ConverterService.getFormatFromSeconds(
-          (task.duration.inSeconds - task.initialDuration.inSeconds).abs(),
+          task.totalDurationToday.inSeconds,
           StopwatchStore.to.format,
         ),
         dataLabelMapper: (m, _) => task.name,

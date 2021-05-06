@@ -27,7 +27,7 @@ class TaskAdvanced extends StatelessWidget {
           const SizedBox(width: 10.0),
           Expanded(
             child: Text(
-              ConverterService.getHumanityDuration(task.duration),
+              ConverterService.getHumanityDuration(task.currentDuration),
               style: TextStyle(color: Colors.white),
             ),
           ),

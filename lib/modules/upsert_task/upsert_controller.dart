@@ -1,5 +1,4 @@
 import 'package:simple_hour/index.dart';
-import 'package:simple_hour/services/hive_service.dart';
 import 'package:simple_hour/stores/upsert_task_store.dart';
 
 class UpsertController {
@@ -16,6 +15,7 @@ class UpsertController {
     if (!_hasErrors()) {
       TaskController().setNewTaskToStore();
       HiveController().setRawTasksToHive();
+      TaskController().setFirstTaskToStore();
       Get.back();
     }
   }

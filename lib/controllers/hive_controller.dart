@@ -22,4 +22,18 @@ class HiveController {
     final stats = rawStats.map((el) => StatitsticsModel.fromJson(el)).toList();
     StopwatchStore.to.setStatistics(stats);
   }
+
+  void setLastDateToHive() {
+    final dt = DateTime.now();
+    final date = DateTime(dt.year, dt.month, dt.day);
+    HiveService.setLastDate(date);
+  }
+
+  Future<bool> isLastDayToday() async {
+    final dt = DateTime.now();
+    final today = DateTime(dt.year, dt.month, dt.day);
+    final lastDate = await HiveService.getLastDate();
+
+    return today.toString() == lastDate.toString();
+  }
 }

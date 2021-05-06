@@ -47,7 +47,7 @@ class Task extends StatelessWidget {
             ),
             const SizedBox(width: 15.0),
             Text(
-              ConverterService.getHumanityDuration(task.duration),
+              ConverterService.getHumanityDuration(task.currentDuration),
               style: TextStyle(color: Colors.white),
             ),
           ],

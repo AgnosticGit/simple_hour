@@ -4,7 +4,7 @@ class TaskModel {
   TaskModel({
     required this.id,
     this.name = '',
-    this.duration = const Duration(hours: 1),
+    this.currentDuration = const Duration(hours: 1),
     this.initialDuration = const Duration(hours: 1),
   });
 
@@ -12,28 +12,30 @@ class TaskModel {
   String name = '';
   DateTime? date;
   Duration initialDuration = const Duration(hours: 1);
-  Duration duration = const Duration(hours: 1);
-
+  Duration currentDuration = const Duration(hours: 1);
+  Duration totalDurationToday = const Duration();
   TaskState state = TaskState.play;
 
-  bool get done => duration.inSeconds == 0;
+  bool get done => currentDuration.inSeconds == 0;
   bool get nameIsEmpty => name == '';
-  bool get durationIsZero => duration.inSeconds == 0;
+  bool get durationIsZero => currentDuration.inSeconds == 0;
 
   TaskModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    initialDuration = ConverterService.parseDuration(json['initial_duration']);
-    duration = ConverterService.parseDuration(json['duration']);
+    initialDuration = ConverterService.parseDuration(json['initialDuration']);
+    currentDuration = ConverterService.parseDuration(json['currentDuration']);
+    totalDurationToday =
+        ConverterService.parseDuration(json['totalDurationToday']);
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
-      'initial_duration': initialDuration.toString(),
-      'duration': duration.toString(),
-      'done': false,
+      'initialDuration': initialDuration.toString(),
+      'currentDuration': currentDuration.toString(),
+      'totalDurationToday': totalDurationToday.toString(),
     };
   }
 

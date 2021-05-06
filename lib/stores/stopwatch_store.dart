@@ -72,14 +72,20 @@ class StopwatchStore extends Store {
     update();
   }
 
-  void setSelectedTaskDuration(Duration duration) {
-    selectedTask?.duration = duration;
+  void setSelectedTaskCurrentDuration(Duration duration) {
+    selectedTask?.currentDuration = duration;
     update();
   }
 
-  void decreaseSelectedTaskDurationForSecond() {
-    int seconds = selectedTask!.duration.inSeconds;
-    selectedTask?.duration = Duration(seconds: --seconds);
+  void decreaseSelectedTaskCurrentDurationForSecond() {
+    int seconds = selectedTask!.currentDuration.inSeconds;
+    selectedTask?.currentDuration = Duration(seconds: --seconds);
+    update();
+  }
+
+  void increaseSelectedTaskTotalDurationForSecond() {
+    int seconds = selectedTask!.totalDurationToday.inSeconds;
+    selectedTask?.totalDurationToday = Duration(seconds: ++seconds);
     update();
   }
 

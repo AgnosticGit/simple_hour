@@ -12,7 +12,7 @@ class UpsertTaskStore extends Store {
   }
 
   void setTaskDuration(Duration duration) {
-    task.duration = duration;
+    task.currentDuration = duration;
     update();
   }
 

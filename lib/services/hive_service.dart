@@ -46,4 +46,15 @@ class HiveService {
     });
     setStatistics(stats);
   }
+
+  static Future<String?> getLastDate() async {
+    final lastDateBox = await Hive.openBox('lastdate');
+    if (lastDateBox.isEmpty) return null;
+    return await lastDateBox.get('lastdate');
+  }
+
+  static Future setLastDate(DateTime lastDate) async {
+    final lastDateBox = await Hive.openBox('lastdate');
+    await lastDateBox.put('lastdate', lastDate.toString());
+  }
 }
