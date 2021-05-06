@@ -16,8 +16,18 @@ class StopwatchScreen extends StatelessWidget {
                 onTapPlay: StopwatchController().onTapPlay,
                 onTapPause: StopwatchController().onTapPause,
                 onTapRefresh: StopwatchController().onTapRefresh,
-                onTapCreate: TaskController().onAddTask,
                 task: StopwatchStore.to.selectedTask,
+                emptyTask: CircularButton(
+                  color: Colors.transparent,
+                  onTap: TaskController().onAddTask,
+                  splashColor: Colors.orange,
+                  size: Get.width * 0.8,
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 100.0,
+                  ),
+                ),
               ),
             ),
           ),
@@ -30,7 +40,12 @@ class StopwatchScreen extends StatelessWidget {
         ),
         Expanded(
           child: TaskSnap(
+            spaceBetweenElements: 20.0,
+            listPadding: const EdgeInsets.all(10.0),
+            selectedTask: StopwatchStore.to.selectedTask,
             tasks: StopwatchStore.to.tasks,
+            selectedBorderColor: Colors.orange,
+            borderColor: Colors.white,
             onTapTask: StopwatchController().onSelectTask,
           ),
         ),

@@ -20,6 +20,7 @@ class TaskAdvanced extends StatelessWidget {
           Expanded(
             child: Text(
               task.name,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(color: Colors.white),
             ),
           ),

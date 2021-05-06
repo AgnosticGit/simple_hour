@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:simple_hour/controllers/statistics_controller.dart';
+import 'package:simple_hour/modules/statistics/statistics_controller.dart';
 import 'package:simple_hour/index.dart';
 
 class StopwatchStore extends Store {
@@ -22,13 +22,6 @@ class StopwatchStore extends Store {
   List<StatitsticsModel> statistics = [];
 
   ChartsYAxisFormat format = ChartsYAxisFormat.minute;
-
-  void onReady() {
-    StopwatchController().onScreenReady();
-    TaskController().setTaskListHeightByListLength();
-    StatisticsController().loadStatistics();
-    super.onReady();
-  }
 
   void setTaskListHeight(double height) {
     taskListHeight = height;

@@ -2,30 +2,6 @@ import 'dart:async';
 import 'package:simple_hour/index.dart';
 
 class StopwatchController {
-  void onScreenReady() async {
-    await _loadTasks();
-    _loadSelectedTask();
-  }
-
-  Future<void> _loadTasks() async {
-    final tasks = await HiveService.getTasks();
-    StopwatchStore.to.setTasksByJsonList(tasks);
-  }
-
-  void _loadSelectedTask() {
-    final firstTask = StopwatchStore.to.firstTask;
-    StopwatchStore.to.setSelectedTask(firstTask);
-  }
-
-  void onSetLastTask() {
-    final tasks = StopwatchStore.to.tasks;
-    if (tasks.length == 0) {
-      StopwatchStore.to.setSelectedTask(null);
-    } else {
-      StopwatchStore.to.setSelectedTask(tasks.last);
-    }
-  }
-
   void onSelectTask(TaskModel task) {
     StopwatchStore.to.setSelectedTask(task);
   }
@@ -58,7 +34,7 @@ class StopwatchController {
         if (seconds > 0) {
           StopwatchStore.to.decreaseSelectedTaskDurationForSecond();
           StatisticsController().saveStatistics();
-          _saveToHive();
+          HiveController().setRawTasksToHive();
         } else {
           StopwatchStore.to.timer?.cancel();
         }
@@ -66,8 +42,10 @@ class StopwatchController {
     });
   }
 
-  void _saveToHive() {
-    final tasksJsonList = StopwatchStore.to.tasksJsonList;
-    HiveService.setTasks(tasksJsonList);
+  void setTaskListHeightByListLength() {
+    int length = 3;
+    final taskListItemHeight = StopwatchStore.to.taskListItemHeight;
+    final taskListHeight = length * taskListItemHeight;
+    StopwatchStore.to.setTaskListHeight(taskListHeight);
   }
 }

@@ -14,8 +14,8 @@ class UpsertController {
 
   void onSaveTask() {
     if (!_hasErrors()) {
-      _saveToStore();
-      _saveToHive();
+      TaskController().setNewTaskToStore();
+      HiveController().setRawTasksToHive();
       Get.back();
     }
   }
@@ -27,15 +27,5 @@ class UpsertController {
 
     if (task.durationIsZero) UpsertTaskStore.to.setDurationError();
     return task.nameIsEmpty || task.durationIsZero;
-  }
-
-  void _saveToStore() {
-    final task = UpsertTaskStore.to.task;
-    StopwatchStore.to.incertTask(task);
-  }
-
-  void _saveToHive() {
-    final tasksJsonList = StopwatchStore.to.tasksJsonList;
-    HiveService.setTasks(tasksJsonList);
   }
 }

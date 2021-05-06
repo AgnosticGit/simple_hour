@@ -1,9 +1,11 @@
+
 import 'package:simple_hour/index.dart';
 
 class ScreenSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<StopwatchStore>(
       init: StopwatchStore(),
+      initState: (_) => LoadController().onApplicationReady(),
       builder: (_) {
         return Scaffold(
           backgroundColor: CustomColors.deeperBlue,
