@@ -6,21 +6,21 @@ class StopwatchScreenController {
     StopwatchStore.to.setSelectedTask(task);
   }
 
-  void onTapPlay() {
+  void onPlay() {
+    StopwatchStore.to.setSelectedTaskState(TaskState.play);
+    StopwatchStore.to.timer?.cancel();
+    _startTimer();
+  }
+
+  void onPause() {
     StopwatchStore.to.setSelectedTaskState(TaskState.pause);
     StopwatchStore.to.timer?.cancel();
     _startTimer();
   }
 
-  void onTapPause() {
-    StopwatchStore.to.setSelectedTaskState(TaskState.play);
-    StopwatchStore.to.timer?.cancel();
-    _startTimer();
-  }
-
-  void onTapRefresh() {
+  void onRefresh() {
     final selectedTask = StopwatchStore.to.selectedTask;
-    StopwatchStore.to.setSelectedTaskState(TaskState.play);
+    StopwatchStore.to.setSelectedTaskState(TaskState.pause);
     StopwatchStore.to.setSelectedTaskCurrentDuration(
       selectedTask!.initialDuration,
     );
@@ -31,7 +31,7 @@ class StopwatchScreenController {
     StopwatchStore.to.timer = Timer.periodic(Duration(seconds: 1), (timer) {
       final selectedTask = StopwatchStore.to.selectedTask;
 
-      if (selectedTask!.state == TaskState.pause) {
+      if (selectedTask!.state == TaskState.play) {
         int seconds = selectedTask.currentDuration.inSeconds;
         if (seconds > 0) {
           StopwatchStore.to.decreaseSelectedTaskCurrentDurationForSecond();

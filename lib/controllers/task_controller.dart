@@ -42,4 +42,6 @@ class TaskController {
       element.totalDurationToday = const Duration();
     });
   }
+
+
 }

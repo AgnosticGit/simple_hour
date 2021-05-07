@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'package:simple_hour/modules/statistics/statistics_screen_controller.dart';
 import 'package:simple_hour/index.dart';
 
 class StopwatchStore extends Store {
   static StopwatchStore get to => Get.put(StopwatchStore());
 
   int currentNavigationIndex = 1;
-
   final double taskListItemHeight = 55.0;
   double taskListHeight = 55;
 
@@ -14,14 +12,14 @@ class StopwatchStore extends Store {
   List<Map<String, dynamic>> get tasksJsonList =>
       tasks.map((e) => e.toJson()).toList();
   TaskModel? get firstTask => tasks.length > 0 ? tasks[0] : null;
-
   TaskModel? selectedTask;
 
   Timer? timer;
 
   List<StatitsticsModel> statistics = [];
-
   ChartsYAxisFormat format = ChartsYAxisFormat.minute;
+
+  DateTime? timeWhenApplicationPaused;
 
   void setTaskListHeight(double height) {
     taskListHeight = height;
@@ -108,6 +106,11 @@ class StopwatchStore extends Store {
     statistics.forEach((s) {
       s.tasks.removeWhere((t) => t.id == task.id);
     });
+    update();
+  }
+
+  void setTimeWhenApplicationPaused(DateTime time) {
+    timeWhenApplicationPaused = time;
     update();
   }
 }

@@ -94,7 +94,7 @@ class Stopwatch extends StatelessWidget {
         onTap: onTapRefresh,
       );
     }
-    if (task?.state == TaskState.play) {
+    if (task?.state == TaskState.pause) {
       return CircularButton(
         child: Icon(
           Icons.play_arrow_outlined,
@@ -103,7 +103,7 @@ class Stopwatch extends StatelessWidget {
         onTap: onTapPlay,
       );
     }
-    if (task?.state == TaskState.pause) {
+    if (task?.state == TaskState.play) {
       return CircularButton(
         size: 50.0,
         child: Icon(

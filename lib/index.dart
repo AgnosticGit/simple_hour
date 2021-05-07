@@ -40,3 +40,4 @@ export 'package:simple_hour/controllers/load_controller.dart';
 export 'package:simple_hour/controllers/hive_controller.dart';
 export 'package:simple_hour/modules/screen_selector/screen_selector_controller.dart';
 export 'package:simple_hour/controllers/statistics_controller.dart';
+export 'package:simple_hour/services/lifecycle_service.dart';

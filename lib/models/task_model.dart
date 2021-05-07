@@ -14,7 +14,8 @@ class TaskModel {
   Duration initialDuration = const Duration(hours: 1);
   Duration currentDuration = const Duration(hours: 1);
   Duration totalDurationToday = const Duration();
-  TaskState state = TaskState.play;
+  TaskState state = TaskState.pause;
+  
 
   bool get done => currentDuration.inSeconds == 0;
   bool get nameIsEmpty => name == '';
